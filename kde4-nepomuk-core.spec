@@ -1,38 +1,45 @@
 # $Revision:$, $Date:$
+%define         _state          stable
+%define         orgname        	nepomuk-core
+%define         qtver           4.8.0
+
 Summary:	Nepomuk Core utilities and libraries
-Name:		nepomuk-core
+Name:		kde4-nepomuk-core
 Version:	4.9.0
-Release:	0.1
+Release:	1
 License:	LGPLv2 or LGPLv3
+Group:		X11/Applications
 URL:		http://www.kde.org/
-Source0:	ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
+# Source0-md5:	ed6454c2000a83a78b473acb87d90e56
+BuildRequires:	QtCore-devel >= %{qtver}
+BuildRequires:	acl-devel
+BuildRequires:	attr-devel
 BuildRequires:	doxygen
-BuildRequires:	kdelibs4-devel >= %{version}
+BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	libdbusmenu-qt-devel
 BuildRequires:	pkgconfig
+BuildRequires:	qca-devel
 BuildRequires:	shared-desktop-ontologies => 0.10.0
 BuildRequires:	soprano-devel => 2.8.0
-Requires:	%{name}-libs = %{version}-%{release}
+BuildRequires:	strigi-devel
+BuildRequires:	zlib-devel
+Requires:	QtCore >= %{qtver}
+BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Nepomuk Core utilities.
 
 %package devel
 Summary:	Developer files for %{name}
-Requires:	%{name}-libs = %{version}-%{release}
+Group:		X11/Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Nepomuk Core development files and libraries.
 
-%package libs
-Summary:	Runtime libraries for %{name}
-Requires:	%{name} = %{version}-%{release}
-Requires:	kdelibs4%{?_isa} >= %{version}
-
-%description libs
-Nepomuk Core libraries.
-
 %prep
-%setup -q
+%setup -q -n %{orgname}-%{version}
 
 %build
 install -d build
@@ -45,49 +52,53 @@ cd build
 
 %{__make}
 
-
 %install
-
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} -C build install \
         DESTDIR=$RPM_BUILD_ROOT
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
-%doc ontologies/README
-%{_kde4_appsdir}/fileindexerservice/
-%{_kde4_appsdir}/nepomukfilewatch/
-%{_kde4_appsdir}/nepomukstorage/
-# this one maybe in -devel?  --rex
-%{_kde4_bindir}/nepomuk-simpleresource-rcgen
-%{_kde4_bindir}/nepomukbackup
-%{_kde4_bindir}/nepomukindexer
-%{_kde4_bindir}/nepomukserver
-%{_kde4_bindir}/nepomukservicestub
-%{_kde4_libdir}/libkdeinit4_nepomukserver.so
-%{_kde4_datadir}/applications/kde4/nepomukbackup.desktop
-%{_kde4_datadir}/autostart/nepomukserver.desktop
-%{_kde4_datadir}/kde4/services/*.desktop
-%{_kde4_datadir}/kde4/servicetypes/nepomukservice.desktop
-%{_kde4_datadir}/ontology/kde/
-%{_datadir}/dbus-1/interfaces/*.xml
+%attr(755,root,root) %{_bindir}/nepomuk-simpleresource-rcgen
+%attr(755,root,root) %{_bindir}/nepomukbackup
+%attr(755,root,root) %{_bindir}/nepomukindexer
+%attr(755,root,root) %{_bindir}/nepomukserver
+%attr(755,root,root) %{_bindir}/nepomukservicestub
+%attr(755,root,root) %{_libdir}/kde4/nepomukbackupsync.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukfileindexer.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukfilewatch.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukqueryservice.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukstorage.so
+%attr(755,root,root) %{_libdir}/libkdeinit4_nepomukserver.so
+%attr(755,root,root) %{_libdir}/libnepomukcommon.so
+%attr(755,root,root) %{_libdir}/libnepomukcore.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libnepomukcore.so.?
+%attr(755,root,root) %{_libdir}/libnepomuksync.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libnepomuksync.so.?
+%{_desktopdir}/kde4/nepomukbackup.desktop
+%{_datadir}/apps/fileindexerservice
+%{_datadir}/apps/nepomukfilewatch
+%{_datadir}/apps/nepomukstorage
+%{_datadir}/autostart/nepomukserver.desktop
+%{_datadir}/dbus-1/interfaces/org.kde.NepomukServer.xml
+%{_datadir}/dbus-1/interfaces/org.kde.nepomuk.*.xml
+%{_datadir}/kde4/services/nepomuk*.desktop
+%{_datadir}/kde4/servicetypes/nepomukservice.desktop
+%{_datadir}/ontology/kde/*.ontology
+%{_datadir}/ontology/kde/*.trig
+
 
 %files devel
 %defattr(644,root,root,755)
-%{_kde4_libdir}/libnepomuksync.so
-%{_kde4_libdir}/libnepomukcore.so
-%{_kde4_libdir}/cmake/NepomukCore/
-%{_kde4_includedir}/nepomuk2/
-%{_kde4_includedir}/Nepomuk2/
-
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
-
-%files libs
-%defattr(644,root,root,755)
-%{_kde4_libdir}/kde4/*.so
-%{_kde4_libdir}/libnepomukcommon.so
-%{_kde4_libdir}/libnepomukcore.so.*
-%{_kde4_libdir}/libnepomuksync.so.*
-
-
+%{_includedir}/Nepomuk2
+%{_includedir}/nepomuk2
+%{_libdir}/cmake/NepomukCore
+%attr(755,root,root) %{_libdir}/libnepomukcore.so
+%attr(755,root,root) %{_libdir}/libnepomuksync.so
