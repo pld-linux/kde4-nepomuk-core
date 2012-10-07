@@ -1,17 +1,17 @@
 # $Revision:$, $Date:$
 %define         _state          stable
 %define         orgname        	nepomuk-core
-%define         qtver           4.8.0
+%define         qtver           4.8.3
 
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
-Version:	4.9.1
+Version:	4.9.2
 Release:	1
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	914e1bd2a21b09017781dd0d43010269
+# Source0-md5:	50c242edf52026a8de26a4a931109b48
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
