@@ -5,24 +5,28 @@
 
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
-Version:	4.9.5
+Version:	4.10.0
 Release:	1
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	0182ca4735278484c9b78ec5ecf0b825
+# Source0-md5:	8f9a7ae4c7e3231227b696154edb5bc0
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
 BuildRequires:	doxygen
+BuildRequires:	exiv2-devel
+BuildRequires:	ffmpeg-devel
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libdbusmenu-qt-devel
 BuildRequires:	pkgconfig
+BuildRequires:	poppler-Qt-devel
 BuildRequires:	qca-devel
 BuildRequires:	shared-desktop-ontologies => 0.10.0
-BuildRequires:	soprano-devel => 2.8.0
+BuildRequires:	soprano-devel => 2.9.0
 BuildRequires:	strigi-devel
+BuildRequires:	taglib-devel
 BuildRequires:	zlib-devel
 Requires:	QtCore >= %{qtver}
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,22 +71,26 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/nepomuk-simpleresource-rcgen
+%attr(755,root,root) %{_bindir}/nepomuk2-rcgen
 %attr(755,root,root) %{_bindir}/nepomukbackup
+%attr(755,root,root) %{_bindir}/nepomukcleaner
 %attr(755,root,root) %{_bindir}/nepomukindexer
 %attr(755,root,root) %{_bindir}/nepomukserver
 %attr(755,root,root) %{_bindir}/nepomukservicestub
-%attr(755,root,root) %{_libdir}/kde4/nepomukbackupsync.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukexiv2extractor.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukffmpegextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukfileindexer.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukfilewatch.so
-%attr(755,root,root) %{_libdir}/kde4/nepomukqueryservice.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukplaintextextractor.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukpopplerextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukstorage.so
+%attr(755,root,root) %{_libdir}/kde4/nepomuktaglibextractor.so
 %attr(755,root,root) %{_libdir}/libkdeinit4_nepomukserver.so
 %attr(755,root,root) %{_libdir}/libnepomukcommon.so
 %attr(755,root,root) %{_libdir}/libnepomukcore.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libnepomukcore.so.?
-%attr(755,root,root) %{_libdir}/libnepomuksync.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libnepomuksync.so.?
 %{_desktopdir}/kde4/nepomukbackup.desktop
+%{_datadir}/applications/kde4/nepomukcleaner.desktop
 %{_datadir}/apps/fileindexerservice
 %{_datadir}/apps/nepomukfilewatch
 %{_datadir}/apps/nepomukstorage
@@ -90,6 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/interfaces/org.kde.NepomukServer.xml
 %{_datadir}/dbus-1/interfaces/org.kde.nepomuk.*.xml
 %{_datadir}/kde4/services/nepomuk*.desktop
+%{_datadir}/kde4/servicetypes/nepomukextractor.desktop
 %{_datadir}/kde4/servicetypes/nepomukservice.desktop
 %{_datadir}/ontology/kde/*.ontology
 %{_datadir}/ontology/kde/*.trig
@@ -101,4 +110,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/nepomuk2
 %{_libdir}/cmake/NepomukCore
 %attr(755,root,root) %{_libdir}/libnepomukcore.so
-%attr(755,root,root) %{_libdir}/libnepomuksync.so
