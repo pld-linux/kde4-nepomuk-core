@@ -5,14 +5,13 @@
 
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
-Version:	4.10.0
-Release:	2
+Version:	4.10.1
+Release:	1
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	8f9a7ae4c7e3231227b696154edb5bc0
-Patch0:		nepomuk-core-recursive-indexing.patch
+# Source0-md5:	e5c7c39ffd6096649dee0fb669def812
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -45,7 +44,6 @@ Nepomuk Core development files and libraries.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-%patch0 -p1
 
 %build
 install -d build
