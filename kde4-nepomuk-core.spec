@@ -87,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/nepomuktaglibextractor.so
 %attr(755,root,root) %{_libdir}/libkdeinit4_nepomukserver.so
 %attr(755,root,root) %{_libdir}/libnepomukcommon.so
+%attr(755,root,root) %{_libdir}/libnepomukextractor.so
 %attr(755,root,root) %{_libdir}/libnepomukcore.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libnepomukcore.so.?
 %{_desktopdir}/kde4/nepomukbackup.desktop
