@@ -6,7 +6,7 @@
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
 Version:	4.11.0
-Release:	1
+Release:	2
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
