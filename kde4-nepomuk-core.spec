@@ -6,12 +6,12 @@
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
 Version:	4.11.0
-Release:	2
+Release:	3
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	94aebba28705f57ec7d24f8584d351d2
+# Source0-md5:	28f0feba3ac91b8aef96a71f30f8dc92
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
