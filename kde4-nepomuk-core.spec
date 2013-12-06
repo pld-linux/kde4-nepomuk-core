@@ -5,13 +5,13 @@
 
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
-Version:	4.11.3
+Version:	4.11.4
 Release:	1
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	ab7cffada2adf4b9f83bfabdbf38b76f
+# Source0-md5:	0c92d0fe7e93d19f1fe7504b371e6db7
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -28,6 +28,7 @@ BuildRequires:	soprano-devel => 2.9.3
 BuildRequires:	strigi-devel
 BuildRequires:	taglib-devel
 BuildRequires:	zlib-devel
+BuildRequires:	ebook-tools-devel
 Requires:	QtCore >= %{qtver}
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
