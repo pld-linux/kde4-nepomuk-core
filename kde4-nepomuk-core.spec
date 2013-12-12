@@ -5,13 +5,13 @@
 
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
-Version:	4.11.4
+Version:	4.12.0
 Release:	1
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	0c92d0fe7e93d19f1fe7504b371e6db7
+# Source0-md5:	c1e4c92642622bd61dc8e170bd63015b
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -90,9 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/nepomukepubextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukexiv2extractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukffmpegextractor.so
-%attr(755,root,root) %{_libdir}/kde4/nepomukmobiextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukodfextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukoffice2007extractor.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukofficeextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukplaintextextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukpopplerextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomuktaglibextractor.so
