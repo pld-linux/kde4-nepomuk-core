@@ -6,7 +6,7 @@
 Summary:	Nepomuk Core utilities and libraries
 Name:		kde4-nepomuk-core
 Version:	4.12.3
-Release:	1
+Release:	2
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
 URL:		http://www.kde.org/
@@ -21,7 +21,7 @@ BuildRequires:	ffmpeg-devel
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libdbusmenu-qt-devel
 BuildRequires:	pkgconfig
-BuildRequires:	poppler-Qt-devel
+BuildRequires:	poppler-qt4-devel
 BuildRequires:	qca-devel
 BuildRequires:	shared-desktop-ontologies => 0.11.0
 BuildRequires:	soprano-devel => 2.9.3
