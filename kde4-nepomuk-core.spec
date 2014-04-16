@@ -16,9 +16,13 @@ BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
 BuildRequires:	doxygen
+BuildRequires:	ebook-tools-devel
 BuildRequires:	exiv2-devel
 BuildRequires:	ffmpeg-devel
+BuildRequires:	kde4-baloo-devel >= %{version}
+BuildRequires:	kde4-kdegraphics-mobipocket-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	kde4-kfilemetadata-devel >= %{version}
 BuildRequires:	libdbusmenu-qt-devel
 BuildRequires:	pkgconfig
 BuildRequires:	poppler-qt4-devel
@@ -28,9 +32,8 @@ BuildRequires:	soprano-devel => 2.9.3
 BuildRequires:	strigi-devel
 BuildRequires:	taglib-devel
 BuildRequires:	zlib-devel
-BuildRequires:	ebook-tools-devel
 Requires:	QtCore >= %{qtver}
-BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Nepomuk Core utilities.
@@ -73,6 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/nepomuk2-rcgen
 %attr(755,root,root) %{_bindir}/nepomukbackup
+%attr(755,root,root) %{_bindir}/nepomukbaloomigrator
 %attr(755,root,root) %{_bindir}/nepomukcleaner
 %attr(755,root,root) %{_bindir}/nepomukcmd
 %attr(755,root,root) %{_bindir}/nepomukctl
@@ -90,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/nepomukepubextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukexiv2extractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukffmpegextractor.so
+%attr(755,root,root) %{_libdir}/kde4/nepomukmobiextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukodfextractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukoffice2007extractor.so
 %attr(755,root,root) %{_libdir}/kde4/nepomukofficeextractor.so
@@ -104,11 +109,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libnepomukcleaner.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libnepomukcleaner.so.?
 %{_desktopdir}/kde4/nepomukbackup.desktop
-%{_datadir}/applications/kde4/nepomukcleaner.desktop
+%{_desktopdir}/kde4/nepomukcleaner.desktop
 %{_datadir}/apps/fileindexerservice
 %{_datadir}/apps/nepomukfilewatch
 %{_datadir}/apps/nepomukstorage
 %{_datadir}/autostart/nepomukserver.desktop
+%{_datadir}/autostart/nepomukbaloomigrator.desktop
 %{_datadir}/dbus-1/interfaces/org.kde.NepomukServer.xml
 %{_datadir}/dbus-1/interfaces/org.kde.nepomuk.*.xml
 %{_datadir}/dbus-1/system-services/org.kde.nepomuk.filewatch.service
