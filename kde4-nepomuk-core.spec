@@ -1,53 +1,59 @@
-# $Revision:$, $Date:$
 %define         _state          stable
 %define         orgname		nepomuk-core
 %define         qtver           4.8.3
 
 Summary:	Nepomuk Core utilities and libraries
+Summary(pl.UTF-8):	Narzędzia i biblioteki Nepomuk Core
 Name:		kde4-nepomuk-core
 Version:	4.14.3
 Release:	3
 License:	LGPLv2 or LGPLv3
 Group:		X11/Applications
-URL:		http://www.kde.org/
 Source0:	http://download.kde.org/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
 # Source0-md5:	8c25048fce09e23469b2fb149331a58a
+URL:		http://www.kde.org/
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
-BuildRequires:	shared-desktop-ontologies-devel >= 0.10.51
 BuildRequires:	automoc4
-BuildRequires:	cmake
+BuildRequires:	cmake >= 2.8.6
 BuildRequires:	doxygen
 BuildRequires:	ebook-tools-devel
-BuildRequires:	exiv2-devel
-BuildRequires:	ffmpeg-devel
+BuildRequires:	exiv2-devel >= 0.12
+BuildRequires:	ffmpeg-devel >= 1.0
 BuildRequires:	kde4-baloo-devel >= %{version}
 BuildRequires:	kde4-kdegraphics-mobipocket-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kfilemetadata-devel >= %{version}
 BuildRequires:	libdbusmenu-qt-devel
 BuildRequires:	pkgconfig
-BuildRequires:	poppler-qt4-devel
+BuildRequires:	poppler-qt4-devel >= 0.12.1
 BuildRequires:	qt4-build
-BuildRequires:	shared-desktop-ontologies => 0.11.0
-BuildRequires:	soprano-devel => 2.9.3
+BuildRequires:	shared-desktop-ontologies-devel >= 0.10.51
+BuildRequires:	soprano-devel >= 2.9.3
 BuildRequires:	strigi-devel
-BuildRequires:	taglib-devel
+BuildRequires:	taglib-devel >= 1.4
 BuildRequires:	zlib-devel
 Requires:	QtCore >= %{qtver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Nepomuk Core utilities.
+Nepomuk Core utilities and libraries.
+
+%description -l pl.UTF-8
+Narzędzia i biblioteki Nepomuk Core.
 
 %package devel
-Summary:	Developer files for %{name}
+Summary:	Development files for Nepomuk Core
+Summary(pl.UTF-8):	Pliki programistyczne Nepomuk Core
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Nepomuk Core development files and libraries.
+Development files for Nepomuk Core.
+
+%description devel -l pl.UTF-8
+Pliki programistyczne Nepomuk Core.
 
 %prep
 %setup -q -n %{orgname}-%{version}
@@ -72,8 +78,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -131,11 +137,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/polkit-1/actions/org.kde.nepomuk.filewatch.policy
 /etc/dbus-1/system.d/org.kde.nepomuk.filewatch.conf
 
-
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libnepomukcore.so
+%attr(755,root,root) %{_libdir}/libnepomukcleaner.so
 %{_includedir}/Nepomuk2
 %{_includedir}/nepomuk2
 %{_libdir}/cmake/NepomukCore
-%attr(755,root,root) %{_libdir}/libnepomukcore.so
-%attr(755,root,root) %{_libdir}/libnepomukcleaner.so
