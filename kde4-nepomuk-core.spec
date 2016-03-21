@@ -15,6 +15,9 @@ Source0:	http://download.kde.org/%{_state}/%{version}/src/%{orgname}-%{version}.
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
+BuildRequires:	shared-desktop-ontologies-devel >= 0.10.51
+BuildRequires:	automoc4
+BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	ebook-tools-devel
 BuildRequires:	exiv2-devel
@@ -26,7 +29,7 @@ BuildRequires:	kde4-kfilemetadata-devel >= %{version}
 BuildRequires:	libdbusmenu-qt-devel
 BuildRequires:	pkgconfig
 BuildRequires:	poppler-qt4-devel
-BuildRequires:	qca-devel
+BuildRequires:	qt4-build
 BuildRequires:	shared-desktop-ontologies => 0.11.0
 BuildRequires:	soprano-devel => 2.9.3
 BuildRequires:	strigi-devel
