@@ -6,7 +6,7 @@ Summary:	Nepomuk Core utilities and libraries
 Summary(pl.UTF-8):	Narzędzia i biblioteki Nepomuk Core
 Name:		kde4-nepomuk-core
 Version:	4.14.3
-Release:	4
+Release:	5
 License:	LGPL v2.1 or LGPL v3
 Group:		X11/Applications
 Source0:	http://download.kde.org/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
@@ -41,7 +41,6 @@ Requires:	QtCore >= %{qt_ver}
 Requires:	QtDBus >= %{qt_ver}
 Requires:	exiv2-libs >= 0.21
 Requires:	ffmpeg-libs >= 1.0
-Requires:	kde4-baloo >= %{version}
 Requires:	kde4-kdegraphics-mobipocket >= %{version}
 Requires:	kde4-kdelibs >= %{version}
 Requires:	kde4-kfilemetadata >= %{version}
@@ -49,6 +48,7 @@ Requires:	poppler-qt4 >= 0.12.1
 Requires:	shared-desktop-ontologies >= 0.10.51
 Requires:	soprano >= 2.9.3
 Requires:	taglib >= 1.4
+Suggests:	kde4-baloo >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
