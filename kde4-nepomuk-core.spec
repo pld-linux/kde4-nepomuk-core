@@ -6,7 +6,7 @@ Summary:	Nepomuk Core utilities and libraries
 Summary(pl.UTF-8):	Narzędzia i biblioteki Nepomuk Core
 Name:		kde4-nepomuk-core
 Version:	4.14.3
-Release:	7
+Release:	8
 License:	LGPL v2.1 or LGPL v3
 Group:		X11/Applications
 Source0:	http://download.kde.org/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
@@ -28,7 +28,7 @@ BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kfilemetadata-devel >= %{version}
 BuildRequires:	libdbusmenu-qt-devel
 BuildRequires:	pkgconfig
-BuildRequires:	poppler-qt4-devel >= 0.12.1
+BuildRequires:	poppler0.61-qt4-devel
 BuildRequires:	qt4-build >= %{qt_ver}
 BuildRequires:	shared-desktop-ontologies-devel >= 0.10.51
 BuildRequires:	soprano-devel >= 2.9.3
@@ -44,7 +44,7 @@ Requires:	ffmpeg-libs >= 1.0
 Requires:	kde4-kdegraphics-mobipocket >= %{version}
 Requires:	kde4-kdelibs >= %{version}
 Requires:	kde4-kfilemetadata >= %{version}
-Requires:	poppler-qt4 >= 0.12.1
+Requires:	poppler0.61-qt4
 Requires:	shared-desktop-ontologies >= 0.10.51
 Requires:	soprano >= 2.9.3
 Requires:	taglib >= 1.4
@@ -83,6 +83,7 @@ cd build
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_DISTRIBUTION_TEXT="PLD-Linux" \
 	-DKDE4_ENABLE_FINAL=OFF \
+	-DEXIV2_VERSION:STRING="0.27" \
 	../
 
 %{__make}
